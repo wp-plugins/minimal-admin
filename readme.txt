@@ -9,7 +9,7 @@ License: GPL2+
 Very simple plugin to hide 'non essential' wp-admin functionality 
 
 == Description ==
-Very simple plugin to hide 'non essential' wp-admin functionality from clients when using WordPress as a CMS.
+Very simple plugin to hide 'non essential' wp-admin functionality.
 This plugin is intended for select client projects where the client is an editor.
 
 
@@ -29,7 +29,7 @@ Minimal Admin includes a very simple options panel for admins to:
 
 
 Once activated Minimal Admin does the following if you are using these plugins: 
-* WordPress SEO: Hides WordPress SEO columns from the edit page / edit posts screens 
+* WordPress SEO: Hides SEO columns from the edit page / edit posts screens 
 * Gravity Forms: Grants editor (client) access to manage Gravity Forms 
 
 
