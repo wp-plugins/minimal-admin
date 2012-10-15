@@ -1,5 +1,5 @@
 === Minimal Admin ===
-Contributors: AaronRutley
+Contributors: AaronRutley,brentes 
 Tags: admin,minimal,dashboard,cms
 Requires at least: 3.4.2
 Tested up to: 3.4.2
