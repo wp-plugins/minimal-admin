@@ -19,7 +19,7 @@ Features include:
 • Hides the footer as well various other minor css changes   
 • Hides the WordPress admin bar (only front end)   
 
-Options to:
+Options to:   
 • Hide Posts from the WordPress menu   
 • Hide screen options tab, help tab and the post filtering bar   
 
@@ -30,7 +30,6 @@ Works well with:
 
 == Installation ==
 
-Upload Minimal Admin to /wp-content/plugins/
-
+Upload Minimal Admin to /wp-content/plugins/   
 Activate the plugin via the plugins menu
 
