@@ -1,9 +1,9 @@
 === Minimal Admin ===
-Contributors: AaronRutley,thenbrent 
+Contributors: aaronelevenmediacomau,thenbrent,Milchek
 Tags: admin,minimal,dashboard,cms
 Requires at least: 3.4.2
 Tested up to: 3.4.2
-Stable tag: 1.0
+Stable tag: 1.0.1
 License: GPL2+
 
 Very simple plugin to hide non essential wp-admin functionality 
