@@ -35,6 +35,6 @@ Activate the plugin via the plugins menu
 
 == Screenshots ==
 
-1. Before (when logged in as an editor / client)
-2. After (when logged in an an editor / client)
+1. Before (when logged in as an editor / client)  
+2. After (when logged in an an editor / client)  
 
