@@ -36,6 +36,10 @@ This plugin is intended for select client projects where the client is an editor
 Upload Minimal Admin to /wp-content/plugins/   
 Activate the plugin via the plugins menu
 
+== Screenshots == 
+ 1. Before (when logged in as an editor / client) 
+ 2. After (when logged in an an editor / client) 
+
 == Changelog ==
 
 = 2.0.0 =
