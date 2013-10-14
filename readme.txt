@@ -12,12 +12,12 @@ Very simple plugin to hide non essential wp-admin functionality
 Very simple plugin to hide 'non essential' wp-admin functionality.  
 This plugin is intended for select client projects where the client is an editor.  
 
-**Features include:**
+=Features include:**
 * Overwrites a range of default wp-admin CSS with minimal styles
-*  Hides the dashboard and directs users to the edit pages screen   
-*  Hides non essential menu items & separators   
-*  Hides the WordPress admin bar (only front end)   
-*  Site link in the admin bar now opens in new window  
+* Hides the dashboard and directs users to the edit pages screen   
+* Hides non essential menu items & separators   
+* Hides the WordPress admin bar (only front end)   
+* Site link in the admin bar now opens in new window  
 
 **Options to:**
 * Hide Posts from the WordPress menu
