@@ -19,11 +19,11 @@ This plugin is intended for select client projects where the client is an editor
 *   Hides the WordPress admin bar (only front end)   
 *   Site link in the admin bar now opens in new window  
 
-**Options to:**
+=Options to:=
 - Hide Posts from the WordPress menu
 - Hide screen options tab and help tab
 
-**Works well with the following plugins:**
+=Works well with the following plugins:=
 • WordPress SEO: Hides SEO columns from the edit page / edit posts screens   
 • Gravity Forms: Grants editor (client) access to manage Gravity Forms
 • MP6 : Very minor tweaks to the admin bar  
