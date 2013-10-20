@@ -3,7 +3,7 @@ Contributors: AaronRutley,thenbrent
 Tags: admin,minimal,dashboard,cms
 Requires at least: 3.4.2
 Tested up to: 3.6.1
-Stable tag: 2.0
+Stable tag: 2.0.1
 License: GPL2+
 
 Very simple plugin to hide non essential wp-admin functionality 
@@ -41,6 +41,9 @@ Activate the plugin via the plugins menu
 2. After (when logged in an an editor / client) 
 
 == Changelog ==
+
+= 2.0.1 =
+* Bug fix for Gravity Forms / Backup Buddy menu conflict 
 
 = 2.0.0 =
 * Major Update which includes compatability with WordPress 3.7, MP6 & various other plugins.
