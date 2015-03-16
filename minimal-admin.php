@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: Minimal Admin 
+Plugin Name: Minimal Admin
 Plugin URI: http://www.minimaladmin.com/
 Description: Very simple plugin to hide non essential wp-admin functionality.
-Version: 2.0.1
+Version: 2.1.0
 Author: Aaron Rutley
-Author URI: http://www.aaronrutley.com/ 
+Author URI: http://www.aaronrutley.com/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -48,6 +48,7 @@ class Minimal_Admin_Plugin {
 
 		add_filter('gform_menu_position', array(&$this, 'ma_gform_menu_position'));
 		add_filter('plugin_action_links', array(&$this, 'add_settings_link'), 10, 2);
+		add_filter('admin_bar_menu', array(&$this, 'ma_remove_howdy') ,25);
 
 		add_action('admin_menu', array(&$this, 'min_admin_plugin_menu') );
 
@@ -67,18 +68,18 @@ class Minimal_Admin_Plugin {
 		wp_enqueue_style('minimal-admin-styles');
 	}
 
-	// optional Styles 
+	// optional Styles
 	function optional_admin_styles() { ?>
 		<style type="text/css">
 		<?php
-			// plugin option to hide screen options 
+			// plugin option to hide screen options
 			$options = get_option('minimal-admin');
 			$option_hide_screen_options = $options['hide_screen_options'];
 			if ($option_hide_screen_options == '1') {
 				echo '#screen-options-link-wrap { display:none; }';
 				echo '#contextual-help-link-wrap { display:none; }';
 			}
-		?> 
+		?>
 		 </style>
 	<?php }
 
@@ -89,7 +90,7 @@ class Minimal_Admin_Plugin {
 		remove_menu_page('upload.php');
 		remove_menu_page('edit-comments.php');
 		remove_menu_page('profile.php');
-		// plugin option to hide posts from menu 
+		// plugin option to hide posts from menu
 		$options = get_option('minimal-admin');
 		$option_hide_posts = $options['hide_posts'];
 		if ($option_hide_posts == '1') {
@@ -109,18 +110,20 @@ class Minimal_Admin_Plugin {
 
 	// hide dashboard by redirecting user to 'all pages'
 	function hide_dashboard ( ) {
-		if ( preg_match( '#wp-admin/?( index.php )?$#', $_SERVER['REQUEST_URI'] ) ) {
-			wp_redirect( admin_url( 'edit.php?post_type=page' ) );
+		if ( current_user_can('edit_pages') ) {
+			if ( preg_match( '#wp-admin/?( index.php )?$#', $_SERVER['REQUEST_URI'] ) ) {
+				wp_redirect( admin_url( 'edit.php?post_type=page' ) );
+			}
 		}
 	}
 
-	// set user meta for edit post per page  
+	// set user meta for edit post per page
 	function my_edit_post_per_page( $per_page, $post_type ) {
-			if ( $post_type == 'page' || $post_type == 'post' ) {	
+			if ( $post_type == 'page' || $post_type == 'post' ) {
 				return 200;
-			} 
+			}
 			return $per_page;
-		}	
+		}
 
 	// grant editor access to gravity forms
 	function add_grav_forms( ){
@@ -128,17 +131,27 @@ class Minimal_Admin_Plugin {
 		$role->add_cap( 'gform_full_access' );
 	}
 
-	// move gravity forms to the bottom of the menu 
+	// move gravity forms to the bottom of the menu
 	function ma_gform_menu_position($position) {
 		return 111;
 	}
 
 	// site link target blank
 	function adminbar_target_blank( ) { ?>
-	<script type="text/javascript" media="screen"> 
+	<script type="text/javascript" media="screen">
 		jQuery(document).ready(function(){jQuery('#wpadminbar .quicklinks  ul  li#wp-admin-bar-site-name  a').attr('target','_blank');});
 	</script>
-	<?php }	
+	<?php }
+
+	// remove howdy
+	function ma_remove_howdy( $wp_admin_bar ) {
+	    $my_account=$wp_admin_bar->get_node('my-account');
+	    $newtitle = str_replace( 'Howdy,', '', $my_account->title );
+	    $wp_admin_bar->add_node( array(
+	        'id' => 'my-account',
+	        'title' => $newtitle,
+	    ) );
+	}
 
 	// add minimal admin settings link to plugin summary page
 	function add_settings_link($links, $file) {
@@ -151,7 +164,7 @@ class Minimal_Admin_Plugin {
 		}
 		return $links;
 	}
-	
+
 	/// options page
 	function min_admin_plugin_menu() {
 		add_options_page(
@@ -162,7 +175,7 @@ class Minimal_Admin_Plugin {
 			array(&$this, 'min_admin_settings')
 		);
 	}
-	
+
 	// save settings
 	function min_admin_save_settings() {
 		$types = array('hide_posts', 'hide_screen_options');
@@ -188,7 +201,7 @@ class Minimal_Admin_Plugin {
 			check_admin_referer('minimal-admin-settings');
 
 			$this->min_admin_save_settings();
-			$message = __('Settings updated', 'minimal-admin');
+			$message = __('Changes saved.', 'minimal-admin');
 		}
 		$options = get_option('minimal-admin');
 		$messages = array(
@@ -222,7 +235,7 @@ class Minimal_Admin_Plugin {
 			?>
 
 			<p><input class="button button-primary" type="submit" name="submit" id="submit"
-					  value="<?php esc_attr_e('Save Changes', 'minimal-admin'); ?>"/></p>
+					  value="<?php esc_attr_e('Save all changes', 'minimal-admin'); ?>"/></p>
 		</form>
 	</div>
 	<?php
